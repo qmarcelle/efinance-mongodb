@@ -1,0 +1,74 @@
+
+<div ng-include="'components/navbar/navbar.html'"></div>
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Automagix</h1>
+    <p class="lead">The software dev team destined to take over in 2018</p>
+    <!--<div ng-controller="AppCtrl" class="md-padding" id="popupContainer">
+    <md-button  class="md-primary md-raised" ng-click="showConfirm($event)" flex flex-md="100">click for awesomeness</md-button>
+    </div>
+      <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">-->
+  </div>
+</header>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header">Financial Overview</h1>
+      <!--  <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
+          <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+        </ul>-->
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <strong>Expenses</strong>
+          </div>
+          <div class="canvas-container">
+            <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
+          </div>
+          <div class="chart-legend expense">
+            <ul>
+              <li class="projects">Projects</li>
+              <li class="travel">Travel</li>
+              <li class="resources">Resources</li>
+              <li class="utilities">Utilities</li>
+              <li class="marketing">Marketing</li>
+              <li class="other">Other</li>
+            </ul>
+          </div>
+          <div class="chart-notes">
+            <h4>Total Expenses: <f:formatNumber value ="${totalExpenses}" type="currency" currencySymbol="$"/></h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <strong>Income</strong>
+          </div>
+          <div class="canvas-container">
+
+            <!-- <canvas id = "incomeChart" class="chart chart-doughnut"  data="{{incomeData}}" labels="{{incomeLabels}}"></canvas>
+ -->
+            <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData"  auto-legend></canvas>
+
+          </div>
+
+          <div class="chart-notes">
+            <h4>Total Expenses: <f:formatNumber value ="${totalIncome}" type="currency" currencySymbol="$"/></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>Automagix  v2.1.1
+  </div>
+</footer>

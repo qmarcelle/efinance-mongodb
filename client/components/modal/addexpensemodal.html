@@ -1,0 +1,113 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>-->
+<md-dialog aria-label="Create new expense">
+  <md-content>
+    <md-card class="class-padding">
+      <form ng-submit="ctrl.parent.addExpense()" name="expenseForm">
+        <h2>Add new Expense</h2>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Description</label>
+            <input ng-model="ctrl.parent.newExpense.description" required>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Category</label>
+            <md-select ng-model="ctrl.parent.newExpense.category" required>
+              <md-option>Consultation</md-option>
+              <md-option>Intensive Session</md-option>
+              <md-option>Seminars</md-option>
+              <md-option>Media Sales</md-option>
+            </md-select>
+           <!-- <input ng-model="ctrl.parent.newExpense.category" required>-->
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Date</label>
+            <input type="date" ng-model="ctrl.parent.newExpense.date" required>
+          </md-input-container>
+        </div>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Amount</label>
+            <input ng-model="ctrl.parent.newExpense.amount" required>
+          </md-input-container>
+          <div layout="row">
+            <md-input-container flex>
+              <md-button type="submit" class="md-raised md-primary" ng-disabled="expenseForm.$invalid">Create Expense</md-button>
+            </md-input-container>
+          </div>
+        </div>
+      </form>
+
+    </md-card>
+
+  </md-content>
+
+
+
+<!--<div class="container">
+&lt;!&ndash;<script type="text/ng-template" id="addexpensemodal.html">&ndash;&gt;
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="close('Cancel')" data-dismiss="modal"
+            aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Add Income</h4>
+  </div>
+  <div class="modal-body">
+    &lt;!&ndash;<form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="recipient-name" class="control-label">Description:</label>
+        <input path="name" type="text" class="form-control"
+               id="recipient-name" placeholder="description"/>
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">Date of
+          Transaction:</label>
+        <input path="date" class="form-control"
+               placeholder="MM-dd-yyyy" type="date"/>
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">Category</label>
+        <select path="category" class="form-control"
+                placeholder="category">
+
+          <option>Consultation</option>
+          <option>Intensive Session</option>
+          <option>Seminars</option>
+          <option>Media Sales</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">Amount:</label>
+        <input path="amount" class="form-control"
+               placeholder="amount"/>
+      </div>
+    </form>&ndash;&gt;
+    <form> &lt;!&ndash;class="expense-form" ng-submit="addExpense()" name="expenseForm">&ndash;&gt;
+      <input ng-model="newExpense.description"  placeholder="description" required><br/>
+      <input ng-model="newExpense.category" placeholder="category" required><br/>
+      <input ng-model="newExpense.date" placeholder="date" required><br/>
+      <input ng-model="newExpense.amount" placeholder="amount" required><br/>
+      <md-button class="md-button md-raised" ng-click="addExpense()"></md-button>
+      &lt;!&ndash;<input class="btn btn-primary" type="submit" ng-disabled="expenseForm.$invalid" value="Post">&ndash;&gt;
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" ng-click="close('No')" class="btn btn-success" data-dismiss="modal">Save
+    </button>
+    <button type="button" ng-click="close('Yes')" class="btn btn-danger" data-dismiss="modal">Cancel
+    </button>
+  </div>
+
+</div>-->
+</md-dialog>

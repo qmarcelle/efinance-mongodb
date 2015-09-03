@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="col-md-12">
+This is the expense view.
+
+<!-- <div class="container">
+  <form class="expense-form" ng-submit="addExpense()" name="expenseForm">
+    <input ng-model="newExpense.description"  placeholder="description" required><br/>
+    <input ng-model="newExpense.category" placeholder="category" required><br/>
+    <input ng-model="newExpense.date" placeholder="date" required><br/>
+    <input ng-model="newExpense.amount" placeholder="amount" required><br/>
+    <input class="btn btn-primary" type="submit" ng-disabled="expenseForm.$invalid" value="Add Expense">
+  </form>
+</div>-->
+
+
+  <!--<div ng-controller="AppCtrl" class="md-padding" id="popupContainer">
+
+  </div>-->
+
+
+  <md-data-table-container>
+    <table md-data-table md-row-select="selected" md-progress="deferred">
+      <thead md-order="query.order" md-trigger="onOrderChange">
+      <tr>
+        <th name="Description"></th>
+        <th name="Category"></th>
+        <th name="Date"></th>
+        <th name="Ammount"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr md-auto-select ng-repeat="expense in expenses">
+        <td>{{expense.description}}</td>
+        <td>{{expense.category}}</td>
+        <td>{{expense.date|date}}</td>
+        <td>{{expense.amount|currency}}</td>
+        <td><md-button class="md-fab md-warn" ng-click="deleteExpense(expense._id)">del</md-button></td>
+        <td><md-button class="md-fab md-primary md-raised" ng-click="editExpense(expense._id)" ng-disabled="true">edit</md-button></td>
+
+      </tr>
+      </tbody>
+    </table>
+  </md-data-table-container>
+  <md-button  class="md-primary md-raised" ng-click="showAdd($event)" flex flex-md="100">add expense</md-button>
+</div>
