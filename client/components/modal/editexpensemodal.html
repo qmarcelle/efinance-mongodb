@@ -1,18 +1,18 @@
 <md-dialog aria-label="Create new expense">
   <md-content>
     <md-card class="class-padding">
-      <form ng-submit="ctrl.parent.addExpense()" name="expenseForm">
-        <h2>Add new Expense</h2>
+      <form ng-submit="ctrl.parent.editExpense()" name="editexpenseForm">
+        <h2>Edit Expense</h2>
         <div layout="row">
           <md-input-container flex>
             <label>Description</label>
-            <input ng-model="ctrl.parent.newExpense.description" required>
+            <input ng-model="ctrl.parent.expense.description" required>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
             <label>Category</label>
-            <md-select ng-model="ctrl.parent.newExpense.category" required>
+            <md-select ng-model="ctrl.parent.expense.category" required>
               <md-option>Consultation</md-option>
               <md-option>Intensive Session</md-option>
               <md-option>Seminars</md-option>
@@ -24,17 +24,17 @@
         <div layout="row">
           <md-input-container flex>
             <label>Date</label>
-            <input type="date" ng-model="ctrl.parent.newExpense.date" required>
+            <input type="date" ng-model="ctrl.parent.expense.date" required>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
             <label>Amount</label>
-            <input ng-model="ctrl.parent.newExpense.amount" required>
+            <input ng-model="ctrl.parent.expense.amount" required>
           </md-input-container>
           <div layout="row">
             <md-input-container flex>
-              <md-button type="submit" class="md-raised md-primary" ng-disabled="expenseForm.$invalid">Create Expense
+              <md-button type="submit" class="md-raised md-primary" ng-disabled="expenseForm.$invalid">Save Expense
               </md-button>
             </md-input-container>
           </div>

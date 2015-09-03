@@ -58,10 +58,6 @@ angular.module('efinanceMongodbApp')
     ];
 
 
-
-
-
-
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
     });

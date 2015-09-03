@@ -2,16 +2,26 @@
 
 angular.module('efinanceMongodbApp')
   .factory('expenseFactory',function($resource){
-    return $resource('api/expenses');
+    return $resource('api/expenses/');
   })
- /* .factory('singleExpense',function($resource){
-    return $resource('api/expense/:id',null,
+  .factory('singleExpense',function($resource){
+    return $resource('api/expenses/:id',null,
       {
         'update': { method:'PUT' }
+      },
+      {
+        'delete': { method:'DELETE' }
       });
-  })*/
-  .controller('ExpenseCtrl', function ($scope,$http,expenseFactory,$mdDialog) {
+  })
+  .controller('ExpenseCtrl', function ($scope,$http,expenseFactory,$mdDialog,singleExpense) {
     $scope.newExpense = '';
+
+    /*$scope.selectedId = '1';*/
+
+    $scope.setSelected=function(id){
+      // $scope.selectedId = id;
+      $scope.expense = singleExpense.get({id:id});
+    };
 
 
 
@@ -26,34 +36,29 @@ angular.module('efinanceMongodbApp')
 
       expenseFactory.save($scope.newExpense);
       $mdDialog.hide();
+      $scope.newExpense = '';
       $scope.expenses = expenseFactory.query();
 
     };
 
-    $scope.editExpense = function(/*description,category,date,amount*/) {
 
-      var description = $scope.newExpense.description;
-      var category = $scope.newExpense.category;
-      var date = $scope.newExpense.date;
-      var amount = $scope.newExpense.amount;
-
-      expenseFactory.save($scope.newExpense);
+    $scope.editExpense = function() {
+      singleExpense.update({id:$scope.expense._id},$scope.expense);
       $mdDialog.hide();
       $scope.expenses = expenseFactory.query();
-
+      $scope.expense = '';
     };
 
 
-
+//delete expense
     $scope.deleteExpense = function(id) {
-      //expenseFactory.remove('/api/expenses/' + id);
-      $http.delete('/api/expenses/' + id);
-
+      //delete the expense
+      singleExpense.delete({id:id});
+      //reload the expenses
       $scope.expenses = expenseFactory.query();
-
     };
 
-
+//show add modal
     $scope.showAdd = function(ev) {
       $mdDialog.show({
         /*controller: modalController,*/
@@ -64,32 +69,20 @@ angular.module('efinanceMongodbApp')
         templateUrl: 'components/modal/addexpensemodal.html',
         parent: angular.element(document.body),
         targetEvent: ev,
-       clickOutsideToClose:true
+        clickOutsideToClose:true
       })
-        .then(function() {
-
-
-          /*$scope.status = 'You said the information was "' + answer + '".';*/
-        });
     };
     $scope.showEdit = function(ev) {
       $mdDialog.show({
         controller: function(){this.parent = $scope;},
         controllerAs: 'ctrl',
         bindToController: true,
-        templateUrl: 'components/modal/addexpensemodal.html',
+        templateUrl: 'components/modal/editexpensemodal.html',
         parent: angular.element(document.body),
         targetEvent: ev,
         clickOutsideToClose:true
       })
-        .then(function() {
-
-
-          /*$scope.status = 'You said the information was "' + answer + '".';*/
-        });
     };
-
-
   })
   /*modalController*/
   .controller('AppCtrl', function($scope, $mdDialog) {
@@ -109,6 +102,7 @@ angular.module('efinanceMongodbApp')
           .targetEvent(ev)
       );
     };
+    //change below to delete confirm
     $scope.showConfirm = function(ev) {
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
@@ -124,18 +118,4 @@ angular.module('efinanceMongodbApp')
         $scope.status = 'You decided to keep your debt.';
       });
     };
-    /*$scope.showAdvanced = function(ev) {
-      $mdDialog.show({
-        controller: modalController,
-        templateUrl: 'components/modal/addexpensemodal.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true
-      })
-        .then(function(answer) {
-          $scope.status = 'You said the information was "' + answer + '".';
-        }, function() {
-          $scope.status = 'You cancelled the dialog.';
-        });
-    };*/
   });
