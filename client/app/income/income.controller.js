@@ -1,75 +1,85 @@
 'use strict';
 
-angular.module('efinanceMongodbApp')
-  .controller('IncomeCtrl', function ($scope,$http) {
-    $scope.message = 'Hello';
-
-
-
-    $scope.incomes = [{
-      id: 1,
-      description: 'Simple title1',
-      category: 'Sample content...',
-      permalink: 'simple-title1',
-      amount: '25000',
-      dateOfTransact: '2012-04-04'
-    }, {
-      id: 2,
-      description: 'Simple title1',
-      category: 'Sample content...',
-      permalink: 'simple-title1',
-      amount: '25000',
-      dateOfTransact: '2012-04-04'
-    }, {
-      id: 3,
-      description: 'Simple title1',
-      category: 'Sample content...',
-      permalink: 'simple-title1',
-      amount: '25000',
-      dateOfTransact: '2012-04-04'
-    }, {
-      id: 4,
-      description: 'Simple title1',
-      category: 'Sample content...',
-      permalink: 'simple-title1',
-      amount: '25000',
-      dateOfTransact: '2012-04-04'
-    },
+angular.module('efinanceMongodbApp').factory('incomeFactory',function($resource){
+  return $resource('api/incomes/');
+})
+  .factory('singleIncome',function($resource){
+    return $resource('api/incomes/:id',null,
       {
-        id: 5,
-        description: 'Simple title1',
-        category: 'Sample content...',
-        permalink: 'simple-title1',
-        amount: '25000',
-        dateOfTransact: '2012-04-04'
+        'update': { method:'PUT' }
       },
       {
-        id: 6,
-        description: 'Simple title1',
-        category: 'Sample content...',
-        permalink: 'simple-title1',
-        amount: '25000',
-        dateOfTransact: '2012-04-04'
-      }
-    ];
+        'delete': { method:'DELETE' }
+      });
+  })
+  .controller('IncomeCtrl', function ($scope,$http,incomeFactory,$mdDialog,singleIncome) {
+    $scope.newIncome = '';
 
+    /*$scope.selectedId = '1';*/
 
-
-    $http.get('/api/incomes').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
-
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/incomes', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
-
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/incomes/' + thing._id);
+    $scope.setSelected=function(id){
+      // $scope.selectedId = id;
+      $scope.income = singleIncome.get({id:id});
     };
 
 
+
+    $scope.incomes = incomeFactory.query();
+
+    $scope.addIncome = function() {
+
+      var description = $scope.newIncome.description;
+      var category = $scope.newIncome.category;
+      var date = $scope.newIncome.date;
+      var amount = $scope.newIncome.amount;
+
+      incomeFactory.save($scope.newIncome);
+      $mdDialog.hide();
+      $scope.newIncome = '';
+      $scope.incomes = incomeFactory.query();
+
+    };
+
+
+    $scope.editIncome = function() {
+      singleIncome.update({id:$scope.income._id},$scope.income);
+      $mdDialog.hide();
+      $scope.incomes = incomeFactory.query();
+      $scope.income = '';
+    };
+
+
+//delete expense
+    $scope.deleteIncome = function(id) {
+      //delete the expense
+      singleIncome.delete({id:id});
+      //reload the expenses
+      $scope.incomes = incomeFactory.query();
+    };
+
+//show add modal
+    $scope.addIncomeModal = function(ev) {
+      $mdDialog.show({
+        /*controller: modalController,*/
+        //controller: this,
+        controller: function(){this.parent = $scope;},
+        controllerAs: 'ctrl',
+        bindToController: true,
+        templateUrl: 'components/modal/addincomemodal.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true
+      })
+    };
+    $scope.showEdit = function(ev) {
+      $mdDialog.show({
+        controller: function(){this.parent = $scope;},
+        controllerAs: 'ctrl',
+        bindToController: true,
+        templateUrl: 'components/modal/editincomemodal.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true
+      })
+    };
   });

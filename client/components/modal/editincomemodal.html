@@ -1,24 +1,22 @@
 <md-dialog aria-label="Create new expense">
   <md-content>
     <md-card class="class-padding">
-      <form ng-submit="ctrl.parent.editExpense()" name="editexpenseForm">
-        <h2>Edit Expense</h2>
+      <form ng-submit="ctrl.parent.editIncome()" name="editIncomeForm">
+        <h2>Edit Income</h2>
         <div layout="row">
           <md-input-container flex>
             <label>Description</label>
-            <input ng-model="ctrl.parent.expense.description" required>
+            <input ng-model="ctrl.parent.income.description" required>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
             <label>Category</label>
-            <md-select ng-model="ctrl.parent.expense.category" required>
-              <md-option>Projects</md-option>
-              <md-option>Travel</md-option>
-              <md-option>Resources</md-option>
-              <md-option>Utilities</md-option>
-              <md-option>Marketing</md-option>
-              <md-option>Other</md-option>
+            <md-select ng-model="ctrl.parent.income.category" required>
+              <md-option>Consultation</md-option>
+              <md-option>Intensive Session</md-option>
+              <md-option>Seminars</md-option>
+              <md-option>Media Sales</md-option>
             </md-select>
             <!-- <input ng-model="ctrl.parent.newExpense.category" required>-->
           </md-input-container>
@@ -26,17 +24,17 @@
         <div layout="row">
           <md-input-container flex>
             <label>Date</label>
-            <input type="date" ng-model="ctrl.parent.expense.date" required>
+            <input type="date" ng-model="ctrl.parent.income.date" required>
           </md-input-container>
         </div>
         <div layout="row">
           <md-input-container flex>
             <label>Amount</label>
-            <input ng-model="ctrl.parent.expense.amount" required>
+            <input ng-model="ctrl.parent.income.amount" required>
           </md-input-container>
           <div layout="row">
             <md-input-container flex>
-              <md-button type="submit" class="md-raised md-primary" ng-disabled="expenseForm.$invalid">Save Expense
+              <md-button type="submit" class="md-raised md-primary" ng-disabled="editIncomeForm.$invalid">Save Income
               </md-button>
             </md-input-container>
           </div>

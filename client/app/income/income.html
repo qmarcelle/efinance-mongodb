@@ -1,27 +1,35 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<div class="col-md-12">
-This is the income view.
+<md-content class="md-padding">
 
-  <md-data-table-container>
-    <table md-data-table md-row-select="selected" md-progress="deferred">
-      <thead md-order="query.order" md-trigger="onOrderChange">
-      <tr>
-        <th name="Description"></th>
-        <th name="Category"></th>
-        <th name="Date"></th>
-        <th name="Ammount"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr md-auto-select ng-repeat="income in incomes">
-        <td>{{income.description}}</td>
-        <td>{{income.category}}</td>
-        <td>{{income.dateOfTransact|date}}</td>
-        <td>{{income.amount|currency}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </md-data-table-container>
-
-
-</div>
+  <md-card>
+    <md-data-table-container>
+      <h1>Income</h1>
+      <table md-data-table><!--md-row-select="selected" md-progress="deferred">-->
+        <thead> <!--md-order="query.order" md-trigger="onOrderChange">-->
+        <tr>
+          <th name="Description"></th>
+          <th name="Category"></th>
+          <th name="Date"></th>
+          <th name="Ammount"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr md-auto-select ng-repeat="income in incomes">
+          <td>{{income.description}}</td>
+          <td>{{income.category}}</td>
+          <td>{{income.date|date}}</td>
+          <td>{{income.amount|currency}}</td>
+          <td>
+            <md-button class="md-fab md-warn" ng-click="deleteIncome(income._id)">del</md-button>
+          </td>
+          <td>
+            <md-button class="md-fab md-primary md-raised" ng-click="setSelected(income._id);showEdit($event)" ng-disabled="false">edit
+            </md-button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </md-data-table-container>
+  </md-card>
+  <md-button class="md-fab md-primary" ng-click="addIncomeModal($event)" flex flex-md="100">+</md-button>
+</md-content>

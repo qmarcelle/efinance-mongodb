@@ -13,10 +13,12 @@
           <md-input-container flex>
             <label>Category</label>
             <md-select ng-model="ctrl.parent.newExpense.category" required>
-              <md-option>Consultation</md-option>
-              <md-option>Intensive Session</md-option>
-              <md-option>Seminars</md-option>
-              <md-option>Media Sales</md-option>
+              <md-option>Projects</md-option>
+              <md-option>Travel</md-option>
+              <md-option>Resources</md-option>
+              <md-option>Utilities</md-option>
+              <md-option>Marketing</md-option>
+              <md-option>Other</md-option>
             </md-select>
             <!-- <input ng-model="ctrl.parent.newExpense.category" required>-->
           </md-input-container>
@@ -24,7 +26,7 @@
         <div layout="row">
           <md-input-container flex>
             <label>Date</label>
-            <input type="date" ng-model="ctrl.parent.newExpense.date" required>
+            <input type="date" ng-model="ctrl.parent.newExpense.date" min="2010-01-02" required>
           </md-input-container>
         </div>
         <div layout="row">

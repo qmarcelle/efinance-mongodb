@@ -4,17 +4,12 @@
   <div class="container">
     <h1>Automagix</h1>
     <p class="lead">The software dev team destined to take over in 2018</p>
-    <!--<div ng-controller="AppCtrl" class="md-padding" id="popupContainer">
-    <md-button  class="md-primary md-raised" ng-click="showConfirm($event)" flex flex-md="100">click for awesomeness</md-button>
-    </div>
-      <md-progress-linear md-mode="indeterminate"></md-progress-linear>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">-->
   </div>
 </header>
 
 
 
-<div class="container">
+<div class="container" ng-controller="MainCtrl" ><!--ng-init="getIncomeData()">-->
   <div class="row">
     <div class="col-sm-12">
       <h1 class="page-header">Financial Overview</h1>
@@ -28,19 +23,9 @@
           </div>
           <div class="canvas-container">
             <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
-          </div>
-          <div class="chart-legend expense">
-            <ul>
-              <li class="projects">Projects</li>
-              <li class="travel">Travel</li>
-              <li class="resources">Resources</li>
-              <li class="utilities">Utilities</li>
-              <li class="marketing">Marketing</li>
-              <li class="other">Other</li>
-            </ul>
+            <h4>Total Expenses: {{projects+travel+resources+utilities+marketing+other|currency}}</h4>
           </div>
           <div class="chart-notes">
-            <h4>Total Expenses: <f:formatNumber value ="${totalExpenses}" type="currency" currencySymbol="$"/></h4>
           </div>
         </div>
       </div>
@@ -54,12 +39,13 @@
 
             <!-- <canvas id = "incomeChart" class="chart chart-doughnut"  data="{{incomeData}}" labels="{{incomeLabels}}"></canvas>
  -->
-            <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData"  auto-legend></canvas>
+            <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData" ></canvas>
 
+            <h4>Total Income: {{seminars+consultations+intensives+media|currency}}</h4>
           </div>
 
           <div class="chart-notes">
-            <h4>Total Expenses: <f:formatNumber value ="${totalIncome}" type="currency" currencySymbol="$"/></h4>
+
           </div>
         </div>
       </div>
@@ -69,6 +55,6 @@
 
 <footer class="footer">
   <div class="container">
-    <p>Automagix  v2.1.1
+    <p>Automagix  v2.4.5
   </div>
 </footer>

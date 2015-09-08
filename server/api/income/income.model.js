@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var IncomeSchema = new Schema({
-  name: String,
-  info: String,
-  active: Boolean
+  description: String,
+  category: String,
+  date:{type:Date, default: Date.now},
+  amount: Number
 });
 
 module.exports = mongoose.model('Income', IncomeSchema);
