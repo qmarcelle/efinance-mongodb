@@ -32,3 +32,35 @@
 .navbar-text {
     margin-left: 15px;
 }
+
+.page-header{
+  text-align: center;
+}
+
+#expenseChart{
+
+margin-left:auto;
+  margin-top:25px;
+  margin-right: auto;
+}
+
+.chart-title{
+  text-align: center;
+}
+
+.chart-wrapper{
+  margin-right: 125px;
+  margin-left: 125px;
+}
+
+#incomeChart{
+  margin-top:25px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.total-income{
+  text-align: center;
+}
+.total-expense{
+  text-align: center;
+}

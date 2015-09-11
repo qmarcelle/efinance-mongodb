@@ -2,57 +2,52 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Automagix</h1>
-    <p class="lead">The software dev team destined to take over in 2018</p>
+    <h1 class="page-header">Financial Overview</h1>
+    <!--<h1>Automagix</h1>
+    <p class="lead">The software dev team destined to take over in 2018</p>-->
   </div>
 </header>
 
 
+<div >
 
-<div class="container" ng-controller="MainCtrl" ><!--ng-init="getIncomeData()">-->
-  <div class="row">
-    <div class="col-sm-12">
-      <h1 class="page-header">Financial Overview</h1>
-      <!--  <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-          <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
-        </ul>-->
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            <strong>Expenses</strong>
-          </div>
-          <div class="canvas-container">
-            <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
-            <h4>Total Expenses: {{projects+travel+resources+utilities+marketing+other|currency}}</h4>
-          </div>
-          <div class="chart-notes">
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6">
-        <div class="chart-wrapper">
-          <div class="chart-title">
-            <strong>Income</strong>
-          </div>
-          <div class="canvas-container">
-
-            <!-- <canvas id = "incomeChart" class="chart chart-doughnut"  data="{{incomeData}}" labels="{{incomeLabels}}"></canvas>
- -->
-            <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData" ></canvas>
-
-            <h4>Total Income: {{seminars+consultations+intensives+media|currency}}</h4>
+<div class="container">
+          <div class="row">
+          <div class="col-md-6">
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <strong>Expenses</strong>
+              </div>
+              <div class="canvas-container">
+                <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
+                <h4 class="total-expense">Total Expenses: {{projects+travel+resources+utilities+marketing+other|currency}}</h4>
+              </div>
+              <div class="chart-notes">
+              </div>
+            </div>
           </div>
 
-          <div class="chart-notes">
-
+          <div class="col-md-6" >
+            <div class="chart-wrapper">
+              <div class="chart-title">
+                <strong>Income</strong>
+              </div>
+              <div class="canvas-container">
+                <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData" ></canvas>
+                <h4 class="total-income">Total Income: {{seminars+consultations+intensives+media|currency}}</h4>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          </div>
+
+
+
+
+      <!--</div>-->
+<!--    </div>
+  </div>-->
 </div>
-
+</div>
 <footer class="footer">
   <div class="container">
     <p>Automagix  v2.4.5
