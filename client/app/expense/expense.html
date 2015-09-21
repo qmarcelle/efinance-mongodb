@@ -1,6 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-<md-content class="md-padding">
 
+
+<md-content class="md-padding">
 <md-card>
   <md-data-table-container>
     <h1>Expenses</h1>
@@ -10,7 +11,7 @@
         <th name="Description"></th>
         <th name="Category"></th>
         <th name="Date"></th>
-        <th name="Ammount"></th>
+        <th name="Amount"></th>
       </tr>
       </thead>
       <tbody>
@@ -20,10 +21,10 @@
         <td>{{expense.date|date}}</td>
         <td>{{expense.amount|currency}}</td>
         <td>
-          <md-button class="md-fab md-warn" ng-click="deleteExpense(expense._id)">del</md-button>
+          <md-button ng-show="isAdmin" class="md-fab md-warn" ng-click="deleteExpense(expense._id)">del</md-button>
         </td>
         <td>
-          <md-button class="md-fab md-primary md-raised" ng-click="setSelected(expense._id);showEdit($event)" ng-disabled="false">edit
+          <md-button ng-show="isAdmin" class="md-fab md-primary md-raised" ng-click="setSelected(expense._id);showEdit($event)" ng-disabled="false">edit
           </md-button>
         </td>
       </tr>
@@ -31,5 +32,5 @@
     </table>
   </md-data-table-container>
 </md-card>
-  <md-button class="md-fab md-primary" ng-click="showAdd($event)" flex flex-md="100">+</md-button>
+  <md-button class="md-fab md-primary" ng-click="showAdd($event)" flex flex-md="100"><i>Add</i></md-button>
 </md-content>

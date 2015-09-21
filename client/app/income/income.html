@@ -10,7 +10,7 @@
           <th name="Description"></th>
           <th name="Category"></th>
           <th name="Date"></th>
-          <th name="Ammount"></th>
+          <th name="Amount"></th>
         </tr>
         </thead>
         <tbody>
@@ -20,10 +20,10 @@
           <td>{{income.date|date}}</td>
           <td>{{income.amount|currency}}</td>
           <td>
-            <md-button class="md-fab md-warn" ng-click="deleteIncome(income._id)">del</md-button>
+            <md-button ng-show="isAdmin" class="md-fab md-warn" ng-click="deleteIncome(income._id)">del</md-button>
           </td>
           <td>
-            <md-button class="md-fab md-primary md-raised" ng-click="setSelected(income._id);showEdit($event)" ng-disabled="false">edit
+            <md-button ng-show="isAdmin" class="md-fab md-primary md-raised" ng-click="setSelected(income._id);showEdit($event)" ng-disabled="false">edit
             </md-button>
           </td>
         </tr>
@@ -31,5 +31,5 @@
       </table>
     </md-data-table-container>
   </md-card>
-  <md-button class="md-fab md-primary" ng-click="addIncomeModal($event)" flex flex-md="100">+</md-button>
+  <md-button class="md-fab md-primary" ng-click="addIncomeModal($event)" flex flex-md="100"><i class="material-icons">add</i></md-button>
 </md-content>

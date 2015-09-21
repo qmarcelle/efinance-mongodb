@@ -8,45 +8,38 @@
   </div>
 </header>
 
-
 <div >
-
-<div class="container">
-          <div class="row">
-          <div class="col-md-6">
-            <div class="chart-wrapper">
-              <div class="chart-title">
-                <strong>Expenses</strong>
-              </div>
-              <div class="canvas-container">
-                <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
-                <h4 class="total-expense">Total Expenses: {{projects+travel+resources+utilities+marketing+other|currency}}</h4>
-              </div>
-              <div class="chart-notes">
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <strong>Expenses</strong>
           </div>
-
-          <div class="col-md-6" >
-            <div class="chart-wrapper">
-              <div class="chart-title">
-                <strong>Income</strong>
-              </div>
-              <div class="canvas-container">
-                <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData" ></canvas>
-                <h4 class="total-income">Total Income: {{seminars+consultations+intensives+media|currency}}</h4>
-              </div>
-            </div>
+          <div class="canvas-container">
+            <canvas id = "expenseChart" tc-chartjs-doughnut  chart-data="expenseData" ></canvas>
+            <h4 class="total-expense">Total Expenses: {{projects+travel+resources+utilities+marketing+other|currency}}</h4>
           </div>
+          <div class="chart-notes">
           </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" >
+        <div class="chart-wrapper">
+          <div class="chart-title">
+            <strong>Income</strong>
+          </div>
+          <div class="canvas-container">
+            <canvas id = "incomeChart" tc-chartjs-doughnut  chart-data="incomeData" ></canvas>
+            <h4 class="total-income">Total Income: {{seminars+consultations+intensives+media|currency}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-
-
-      <!--</div>-->
-<!--    </div>
-  </div>-->
-</div>
+  </div>
 </div>
 <footer class="footer">
   <div class="container">

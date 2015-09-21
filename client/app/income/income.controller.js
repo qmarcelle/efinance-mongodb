@@ -12,17 +12,15 @@ angular.module('efinanceMongodbApp').factory('incomeFactory',function($resource)
         'delete': { method:'DELETE' }
       });
   })
-  .controller('IncomeCtrl', function ($scope,$http,incomeFactory,$mdDialog,singleIncome) {
+  .controller('IncomeCtrl', function ($scope,$http,incomeFactory,$mdDialog,singleIncome,Auth) {
     $scope.newIncome = '';
 
-    /*$scope.selectedId = '1';*/
-
     $scope.setSelected=function(id){
-      // $scope.selectedId = id;
       $scope.income = singleIncome.get({id:id});
     };
 
 
+    $scope.isAdmin = Auth.isAdmin();
 
     $scope.incomes = incomeFactory.query();
 
@@ -47,7 +45,6 @@ angular.module('efinanceMongodbApp').factory('incomeFactory',function($resource)
       $scope.incomes = incomeFactory.query();
       $scope.income = '';
     };
-
 
 //delete expense
     $scope.deleteIncome = function(id) {

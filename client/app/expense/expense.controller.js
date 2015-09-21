@@ -13,17 +13,15 @@ angular.module('efinanceMongodbApp')
         'delete': { method:'DELETE' }
       });
   })
-  .controller('ExpenseCtrl', function ($scope,$http,expenseFactory,$mdDialog,singleExpense) {
+  .controller('ExpenseCtrl', function ($scope,$http,expenseFactory,$mdDialog,singleExpense,Auth) {
     $scope.newExpense = '';
-
-    /*$scope.selectedId = '1';*/
 
     $scope.setSelected=function(id){
       // $scope.selectedId = id;
       $scope.expense = singleExpense.get({id:id});
     };
 
-
+    $scope.isAdmin = Auth.isAdmin();
 
     $scope.expenses = expenseFactory.query();
 
